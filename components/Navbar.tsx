@@ -2,18 +2,29 @@
 
 import { useState, useEffect } from "react"
 import Link from "next/link"
-import { Button } from "@/components/ui/button"
-import { Menu } from "lucide-react"
-import { Sheet, SheetContent, SheetTrigger } from "@/components/ui/sheet"
 import { cn } from "@/lib/utils"
 import Image from "next/image"
 import ThemeToggle from "./ThemeToggle"
 import { useTheme } from "next-themes"
+import { InteractiveHoverButton } from "./magicui/interactive-hover-button"
+import { useSession } from "next-auth/react"
+import { useRouter } from "next/navigation"
 
 export default function Navbar() {
+  const { data: session } = useSession();
+  const router = useRouter()
   const [scrolled, setScrolled] = useState(false)
   const [mounted, setMounted] = useState(false)
   const { theme, resolvedTheme } = useTheme()
+
+  const handleClick = () => {
+    if (session?.user){
+      router.push('/dashboard')
+    }
+    else {
+      router.push('/auth/signin')
+    }
+  }
 
   useEffect(() => {
     setMounted(true)
@@ -67,7 +78,8 @@ export default function Navbar() {
           <ThemeToggle />
           </div>
           <div className="hidden md:block">
-          <Button className="bg-white text-black hover:bg-gray-200">Get Started Now</Button>
+          
+          <InteractiveHoverButton onClick={handleClick}>Get Started</InteractiveHoverButton>
           </div>
         </div>
 
