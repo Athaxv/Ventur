@@ -15,7 +15,7 @@ function page() {
       <DotPattern
   //     width={10}
   // height={10}
-  glow
+  // glow
         className={cn(
           "[mask-image:radial-gradient(400px_circle_at_center,white,transparent)]",
         )}
