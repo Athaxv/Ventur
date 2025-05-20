@@ -80,19 +80,9 @@ export default function SignIn() {
       })
 
       if (result?.error) {
-        toast(
-          <div>
-            <div className="font-bold">Authentication failed</div>
-            <div>Invalid email or password. Please try again.</div>
-          </div>
-        )
+        toast.error("Authentication failed: Invalid email or password.")
       } else {
-        toast(
-          <div>
-            <div className="font-bold">Success!</div>
-            <div>You have been signed in.</div>
-          </div>
-        )
+        toast.success("Login Success")
         router.push("/")
       }
     } finally {
