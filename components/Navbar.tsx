@@ -49,7 +49,7 @@ export default function Navbar() {
     <header
       className={cn(
         "fixed top-0 w-full z-50 transition-all duration-300 ease-in-out",
-        scrolled ? "bg-black/90 backdrop-blur-sm py-2 shadow-md" : "bg-transparent py-4",
+        scrolled ? "dark:bg-black/20 backdrop-blur-sm py-2 shadow-xs" : "bg-transparent py-4",
       )}
     >
       <div className="container mx-auto px-4 flex items-center justify-between">
